@@ -6,11 +6,12 @@
 ## About Implementation Details
 
 - Tech stack : Node.js, PostgreSQL, Express, Redis, Docker & Docker-Compose
-- **Redis** is used to cache incoming API requests. Once a data saved (insert, update, delete) in database, application is also save the data in Redis. When the request is came, the data is taken from the cache for efficiency.
+- **Redis** is used to cache data. Once a data saved (insert, update, delete) in database, application is also save the data in Redis. When the request is came, the data is taken from the cache for efficiency.
 - Whole application is **Dockerized** to fast and efficient deployment. 
 - **Postman** collection file is provided to test study.
 - Application **validates API requests** by [**Joi**](https://www.npmjs.com/package/joi) as _express middleware_. If a request is invalid, user gets detailed (parametrized) error message. 
 - [**Node-pg**](https://www.npmjs.com/package/pg) is used as a _PostgreSQL Client_. Node-pg is a _driver-level_ client that provides very efficient _pooling_ and _transaction_ mechanism. Also, it provides _parametrized queries_ that provides parameter type checking and safe querying. Connection pooling, transaction, and parametrized queries are used in the application. 
+- _Singleton_ design pattern is used in the application.
  
 
 ## Setup & Run
