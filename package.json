@@ -1,0 +1,23 @@
+{
+  "name": "sensgreen-case-study",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "start": "npm install && node app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "sensgreen"
+  ],
+  "type": "module",
+  "author": "Yasin Yalcin",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1",
+    "express-validation": "^3.0.8",
+    "joi": "^17.4.0",
+    "pg": "^8.6.0",
+    "redis": "^3.1.2"
+  }
+}

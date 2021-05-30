@@ -1,0 +1,41 @@
+version: "3"
+services:
+    redis:
+        image: "redis:latest"
+        ports:
+            - "6379:6379"
+        networks:
+            - default
+        expose:
+            - "6379"
+        command: ["redis-server", "--bind", "redis", "--port", "6379"]
+    postgres:
+        image: "postgres:13"
+        environment:
+            POSTGRES_PASSWORD: postgres
+            POSTGRES_USER: postgres
+            POSTGRES_DB: sensgreen_db
+        ports:
+            - "5432:5432"
+        expose:
+            - "5432"
+    restapi:
+        image: sensgreen-case-image
+        container_name: sensgreen-case-container
+        build: .
+        networks:
+            - default
+        links:
+            - postgres
+            - redis
+        ports:
+            - "8000:8000"
+        volumes:
+            - .:/app
+        depends_on:
+            - postgres
+            - redis
+        command: ["npm", "start"]
+        
+networks:
+    default:
